@@ -118,3 +118,177 @@ footer {
     padding: 5px 20px 20px;
   }
 }
+
+/* ------------------------------------------------------------------ */
+/* Section 2: subtitle, source highlight and charts                    */
+/* ------------------------------------------------------------------ */
+
+.title .subtitle {
+  font-family: "Roboto Slab", Georgia, serif;
+  font-size: 22px;
+  color: #ffffff;
+  margin-bottom: 15px;
+}
+
+.section-subtitle {
+  font-family: "Roboto Slab", Georgia, serif;
+  font-size: 20px;
+  color: #002677;
+  margin-top: -5px;
+}
+
+/* Highlight Eurostat as the main data source */
+.sources .main-source {
+  font-weight: 500;
+}
+
+.badge {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 0 8px;
+  font-size: 13px;
+  font-weight: 400;
+  color: white;
+  background-color: #199bfc;
+  border-radius: 10px;
+}
+
+/* One <figure> per chart */
+.chart-figure {
+  margin: 40px 0 0;
+  padding-top: 10px;
+  border-top: 1px solid #e3e8f0;
+}
+
+.chart-figure h3 {
+  margin-top: 10px;
+  color: #002677;
+}
+
+.chart {
+  width: 100%;
+}
+
+/* The SVGs get a viewBox, so they scale with the container */
+.chart svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  font-family: "Fira Sans", Arial, sans-serif;
+}
+
+.chart .axis text {
+  font-size: 13px;
+  fill: #4a4f55;
+}
+
+.chart .axis path,
+.chart .axis line {
+  stroke: #c9d0da;
+}
+
+.chart .grid line {
+  stroke: #e8ecf2;
+}
+
+.chart .grid path {
+  display: none;
+}
+
+.chart .axis-label {
+  font-size: 13px;
+  fill: #4a4f55;
+}
+
+.chart .value-label {
+  font-size: 12px;
+  fill: #25282a;
+}
+
+/* Legend above a chart (HTML, not SVG) */
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 18px;
+  margin: 5px 0 10px;
+  font-size: 14px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.legend-swatch {
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+}
+
+.legend-swatch.dot {
+  border-radius: 50%;
+}
+
+.chart-text {
+  margin: 10px 0 5px;
+}
+
+figcaption {
+  font-size: 14px;
+  color: #666;
+}
+
+.data-note {
+  margin-top: 40px;
+  font-size: 14px;
+  color: #666;
+}
+
+/* Waffle charts side by side (stacked on small screens) */
+.waffles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.waffle {
+  flex: 1 1 250px;
+  max-width: 340px;
+}
+
+.waffle-title {
+  font-size: 15px;
+  margin: 0 0 6px;
+}
+
+.waffle-title strong {
+  font-size: 22px;
+  color: #002677;
+}
+
+/* Tooltip shared by all charts */
+.tooltip {
+  position: absolute;
+  pointer-events: none;
+  opacity: 0;
+  max-width: 240px;
+  padding: 6px 10px;
+  font-size: 14px;
+  line-height: 1.4;
+  color: #25282a;
+  background-color: white;
+  border: 1px solid #c9d0da;
+  border-radius: 4px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  transition: opacity 0.1s;
+}
+
+.tooltip.visible {
+  opacity: 1;
+}
+
+.tooltip .muted {
+  color: #666;
+  font-size: 13px;
+}

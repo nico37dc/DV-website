@@ -11,31 +11,62 @@
       href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;500&amp;family=Roboto+Slab:wght@400;700&amp;display=swap"
     />
     <link rel="stylesheet" href="css/style.css" />
+    <!-- D3.js v7 for the charts -->
+    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+    <script src="js/charts.js" defer></script>
   </head>
   <body>
     <header>
       <nav>
         <a href="#project">Project</a>
-        <a href="#visualizations">Visualizations</a>
+        <a href="#visualizations">AI adoption</a>
       </nav>
       <div class="title">
         <h1>Mapping the Impact of AI through Data</h1>
+        <p class="subtitle">
+          AI at Work in Europe: how enterprises adopt artificial intelligence
+        </p>
         <p>Nico Durst-Claus, 10377380</p>
         <p class="course">Data Visualization, University of Genoa, 2026/27</p>
       </div>
     </header>
 
     <main>
+      <!-- Section 1: introduction -->
       <section id="project">
         <h2>Project</h2>
         <p>
-          This website is part of the Data Visualization course at the
-          University of Genoa. It will contain several visualizations about the
-          impact of artificial intelligence, for example on companies, research
-          and the economy.
+          Artificial intelligence has moved from research labs into everyday
+          business software: chatbots answer customers, machine-learning models
+          forecast demand and text-generation tools draft documents. For
+          European enterprises the question is no longer whether AI exists, but
+          whether and how they put it to work.
         </p>
-        <h3>Possible data sources</h3>
+        <p>
+          The guiding question of this website is:
+          <strong>
+            how widely do European enterprises use AI, and how does this differ
+            between countries, company sizes and years?</strong
+          >
+          The answers are based on official statistics from Eurostat, which
+          surveys enterprises with at least 10 employees in all EU member states
+          every year.
+        </p>
+        <p>
+          The visualizations below compare countries, show how adoption depends
+          on the size of an enterprise, follow its development over time and
+          look at how many different AI technologies enterprises combine.
+        </p>
+        <h3>Data sources</h3>
         <ul class="sources">
+          <li class="main-source">
+            <a
+              href="https://ec.europa.eu/eurostat/databrowser/view/isoc_eb_ai/default/table?lang=en"
+              >Eurostat: Artificial intelligence by size class of enterprise
+              (isoc_eb_ai)</a
+            >
+            <span class="badge">main source</span>
+          </li>
           <li>
             <a href="https://hai.stanford.edu/ai-index/2026-ai-index-report"
               >Stanford AI Index Report 2026</a
@@ -48,12 +79,6 @@
             >
           </li>
           <li>
-            <a
-              href="https://ec.europa.eu/eurostat/databrowser/view/isoc_eb_ai/default/table?lang=en"
-              >Eurostat (AI in enterprises)</a
-            >
-          </li>
-          <li>
             <a href="https://huggingface.co/datasets/Anthropic/EconomicIndex"
               >Anthropic Economic Index</a
             >
@@ -62,16 +87,190 @@
         </ul>
       </section>
 
+      <!-- Section 2: visualizations (charts are drawn by js/charts.js) -->
       <section id="visualizations">
-        <h2>Visualizations</h2>
-        <p class="placeholder">
-          The first visualizations will be added here soon.
+        <h2>AI adoption in European enterprises</h2>
+        <p class="section-subtitle">How many European enterprises use AI?</p>
+        <p>
+          Eurostat counts an enterprise as an AI user if it uses at least one
+          AI technology, for example text mining, speech recognition, text or
+          image generation, image recognition, machine learning or
+          AI-based process automation. All figures refer to enterprises with at
+          least 10 employees (excluding the financial sector) and are given as
+          a percentage of all enterprises in the group.
+        </p>
+        <p>
+          The survey was carried out in 2021, 2023, 2024 and 2025; there is no
+          data for 2022. Hover over (or tap) any bar, cell or square to see the
+          exact value.
+        </p>
+
+        <!-- Chart 1: bar chart -->
+        <figure class="chart-figure">
+          <h3>AI use ranges from about 5% to over 40% across EU countries</h3>
+          <div
+            id="chart-bar"
+            class="chart"
+            role="img"
+            aria-label="Bar chart: share of enterprises using AI in each EU country in 2025, sorted from highest (Denmark, 42%) to lowest (Romania, 5%). The EU-27 average is 20%."
+          ></div>
+          <p class="chart-text">
+            In 2025, one in five EU enterprises (20%) used at least one AI
+            technology. The Nordic and Benelux countries are far above this
+            average, while several countries in Eastern and Southern Europe
+            stay below 10%. Italy (16%) is below and Germany (26%) clearly
+            above the EU average.
+          </p>
+          <figcaption>
+            Bar chart. Enterprises with 10+ employees, 2025. Source:
+            <a
+              href="https://ec.europa.eu/eurostat/databrowser/view/isoc_eb_ai/default/table?lang=en"
+              >Eurostat, isoc_eb_ai, 2025</a
+            >.
+          </figcaption>
+        </figure>
+
+        <!-- Chart 2: grouped bar chart -->
+        <figure class="chart-figure">
+          <h3>Large enterprises use AI far more often than small ones</h3>
+          <div
+            id="chart-grouped"
+            class="chart"
+            role="img"
+            aria-label="Grouped bar chart: share of enterprises using AI in 2025 by size class (small, medium, large) for the EU-27 and eight countries. In every country large enterprises have the highest share."
+          ></div>
+          <p class="chart-text">
+            The size gap appears in every country shown: in the EU, 55% of large
+            enterprises (250+ employees) use AI, compared with 17% of small
+            ones (10&ndash;49 employees). Because small firms are by far the
+            most numerous, they pull the overall average down.
+          </p>
+          <figcaption>
+            Grouped bar chart. Selected countries, 2025. Source:
+            <a
+              href="https://ec.europa.eu/eurostat/databrowser/view/isoc_eb_ai/default/table?lang=en"
+              >Eurostat, isoc_eb_ai, 2025</a
+            >.
+          </figcaption>
+        </figure>
+
+        <!-- Chart 3: heatmap -->
+        <figure class="chart-figure">
+          <h3>Adoption stalled until 2023, then accelerated almost everywhere</h3>
+          <div
+            id="chart-heatmap"
+            class="chart"
+            role="img"
+            aria-label="Heatmap: share of enterprises using AI for every EU country (rows) and the years 2021, 2023, 2024 and 2025 (columns). Darker blue means a higher share; the columns get darker from 2023 to 2025."
+          ></div>
+          <p class="chart-text">
+            Between 2021 and 2023 the EU average hardly moved (8% to 8%), and
+            some countries even recorded lower values. From 2023 onwards the
+            colours darken in nearly every row: the EU share went from 8% to
+            13% in 2024 and to 20% in 2025.
+          </p>
+          <figcaption>
+            Heatmap. Enterprises with 10+ employees, countries sorted by their
+            2025 value. Source:
+            <a
+              href="https://ec.europa.eu/eurostat/databrowser/view/isoc_eb_ai/default/table?lang=en"
+              >Eurostat, isoc_eb_ai, 2021&ndash;2025</a
+            >.
+          </figcaption>
+        </figure>
+
+        <!-- Chart 4: 100% stacked bar chart -->
+        <figure class="chart-figure">
+          <h3>Large AI users tend to combine several AI technologies</h3>
+          <div
+            id="chart-stacked"
+            class="chart"
+            role="img"
+            aria-label="100% stacked bar chart: EU enterprises in 2025 by size class, split into those using no AI, one, two, or three or more AI technologies. Among large enterprises 34% use three or more technologies, among small ones 6.5%."
+          ></div>
+          <p class="chart-text">
+            Each bar splits all enterprises of a size class into four groups
+            that add up to 100%. Among large enterprises, 34% use three or more
+            different AI technologies, which is more than half of all large AI
+            users. Among small enterprises, most companies do not use AI at
+            all.
+          </p>
+          <figcaption>
+            100% stacked bar chart. EU-27, 2025. Groups derived from the
+            Eurostat indicators &ldquo;uses at least 1 / 2 / 3 AI
+            technologies&rdquo;. Source:
+            <a
+              href="https://ec.europa.eu/eurostat/databrowser/view/isoc_eb_ai/default/table?lang=en"
+              >Eurostat, isoc_eb_ai, 2025</a
+            >.
+          </figcaption>
+        </figure>
+
+        <!-- Chart 5: waffle chart -->
+        <figure class="chart-figure">
+          <h3>One in five EU enterprises uses AI, but more than half of large ones</h3>
+          <div
+            id="chart-waffle"
+            class="chart"
+            role="img"
+            aria-label="Two waffle charts with 100 squares each: out of 100 EU enterprises 20 use AI; out of 100 large EU enterprises 55 use AI (2025)."
+          ></div>
+          <p class="chart-text">
+            Each grid stands for 100 enterprises and each square for one of
+            them. Across all enterprises with 10+ employees, about 20 out of
+            100 use AI. Among large enterprises the number rises to 55 out of
+            100.
+          </p>
+          <figcaption>
+            Waffle chart. EU-27, 2025, values rounded to whole enterprises.
+            Source:
+            <a
+              href="https://ec.europa.eu/eurostat/databrowser/view/isoc_eb_ai/default/table?lang=en"
+              >Eurostat, isoc_eb_ai, 2025</a
+            >.
+          </figcaption>
+        </figure>
+
+        <!-- Chart 6 (extra): dumbbell plot -->
+        <figure class="chart-figure">
+          <h3>Every EU country uses more AI than in 2021, but at different speeds</h3>
+          <div
+            id="chart-dumbbell"
+            class="chart"
+            role="img"
+            aria-label="Dumbbell plot: share of enterprises using AI in 2021 and 2025 for each EU country, sorted by the increase in percentage points. Belgium and Sweden gained most, Romania and Portugal least."
+          ></div>
+          <p class="chart-text">
+            The left dot shows 2021, the right dot 2025; the line between them
+            is the increase. Countries that already led in 2021 often grew
+            fastest, so the distance between leaders and laggards has become
+            larger, not smaller.
+          </p>
+          <figcaption>
+            Dumbbell plot (comparison). Enterprises with 10+ employees, sorted
+            by increase in percentage points. Source:
+            <a
+              href="https://ec.europa.eu/eurostat/databrowser/view/isoc_eb_ai/default/table?lang=en"
+              >Eurostat, isoc_eb_ai, 2021 and 2025</a
+            >.
+          </figcaption>
+        </figure>
+
+        <p class="data-note">
+          Note: a few values are flagged by Eurostat as a break in the time
+          series (France 2023, Sweden 2023, Netherlands 2025); they are marked
+          in the tooltips. Data downloaded from the Eurostat API in November
+          2026 and prepared with <code>scripts/prepare_data.py</code>.
         </p>
       </section>
     </main>
 
+    <!-- Shared tooltip for all charts -->
+    <div id="tooltip" class="tooltip" role="status" aria-live="polite"></div>
+
     <footer>
       <p>Nico Durst-Claus, University of Genoa</p>
+      <p>Data: Eurostat (isoc_eb_ai), 2026</p>
     </footer>
   </body>
 </html>
