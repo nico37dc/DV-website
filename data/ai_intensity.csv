@@ -1,0 +1,17 @@
+size,size_label,year,category,value
+10-49,Small (10-49),2025,none,83.0
+10-49,Small (10-49),2025,one,6.43
+10-49,Small (10-49),2025,two,4.07
+10-49,Small (10-49),2025,three_plus,6.5
+50-249,Medium (50-249),2025,none,69.64
+50-249,Medium (50-249),2025,one,9.55
+50-249,Medium (50-249),2025,two,7.11
+50-249,Medium (50-249),2025,three_plus,13.7
+GE250,Large (250+),2025,none,44.97
+GE250,Large (250+),2025,one,11.06
+GE250,Large (250+),2025,two,10.39
+GE250,Large (250+),2025,three_plus,33.58
+GE10,All (10+),2025,none,80.05
+GE10,All (10+),2025,one,7.0
+GE10,All (10+),2025,two,4.67
+GE10,All (10+),2025,three_plus,8.28
